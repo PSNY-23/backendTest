@@ -1,13 +1,12 @@
 import express from "express";
+import serverless from "serverless-http";
 
 const app = express();
 
-// Define a route for the root URL
+// Define your routes
 app.get("/", (req, res) => {
-    res.send("Hello worldfajs;oaie");
+  res.send("Hello world!");
 });
 
-// Start the server and listen on port 3000
-app.listen(3000, () => {
-    console.log("Port is running on 3000");
-});
+// Wrap the app for serverless functions
+module.exports.handler = serverless(app);
